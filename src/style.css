@@ -1,0 +1,132 @@
+.calzyr-container {
+    border: 0.0625rem solid;
+    border-radius: 0.3125rem;
+
+    font-family: Verdana, sans-serif;
+}
+
+@media(max-width: 768px) {
+    .calzyr-container {
+        width: 450px
+    }
+}
+
+@media(min-width: 380px) {
+    .calzyr-container {
+        width: 350px;
+    }
+}
+@media(max-width: 380px) {
+    .calzyr-container {
+        width: 100%;
+    }
+}
+
+.light {
+   color: #4d4d4d;
+}
+
+.dark {
+    color: #cccccc;
+}
+
+.calzyr-container.dark {
+    background-color: #554d56;
+    color: #cccccc;
+    border-color: #3333;
+}
+
+.calzyr-container.light {
+    background-color: #f7f7f7;
+    color: #4d4d4d;
+    border-color: #eeeeee;
+}
+
+.calzyr-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-weight: bolder;
+    letter-spacing: 0.0625rem;
+}
+.calzyr-title p {
+    margin: 0;
+    margin-top: 0.3125rem !important;
+    padding-bottom: 0.625rem
+}
+
+.calzyr-title.dark {
+    border-bottom: 0.0625rem solid #737373;
+}
+
+.calzyr-title.light {
+    border-bottom: 0.0625rem solid #eeeeee;
+}
+
+/* Calendar content styling */
+.calzyr-content {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.3125rem;
+    padding: 0.6250rem;
+}
+
+/* Calendar day styling */
+.calzyr-day {
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.calzyr-container.light .calzyr-day:hover {
+    background-color: #d9d9d9;
+}
+
+.calzyr-container.dark .calzyr-day:hover {
+    background-color: #786c79;
+}
+
+/* Calendar week day styling */
+.calzyr-weekday {
+    text-align: center;
+}
+
+.calzyr-container.light .calzyr-weekday {
+    padding-bottom: 0.03125rem;
+    border-bottom: 0.0625rem solid #eeeeee;
+}
+
+.calzyr-container.dark .calzyr-weekday {
+    padding-bottom: 0.03125rem;
+    border-bottom: 0.0625rem solid #737373;
+}
+
+.calzyr-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0.3125rem 0.3125rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.next-month {
+    background: none;
+    color: inherit;
+    border: none;
+    padding-left: 0.625rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.previous-month {
+    background: none;
+    color: inherit;
+    border: none;
+    padding-right: 0.625rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
