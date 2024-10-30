@@ -3,10 +3,11 @@ import VueCalzyr from './VueCalzyr.vue';
 </script>
 
 <template>
-
-  <VueCalzyr showOption showDayOfWeek />
+  <!--  Light mode example-->
+  <VueCalzyr showOption showDayOfWeek/>
   <div id="padding-top">
-    <VueCalzyr darkMode />
+    <!--  Dark mode example-->
+    <VueCalzyr darkMode highlightToday/>
   </div>
 </template>
 

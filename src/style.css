@@ -75,7 +75,9 @@
 /* Calendar day styling */
 .calzyr-day {
     text-align: center;
-    padding: 0.5rem;
+    margin: 0.5rem;
+    user-select: none;
+    border-radius: 0.3125rem;
 }
 
 .calzyr-container.light .calzyr-day:hover {
@@ -84,6 +86,15 @@
 
 .calzyr-container.dark .calzyr-day:hover {
     background-color: #786c79;
+}
+
+.today {
+    font-weight: bold;
+    color: #cccccc;
+    background-color: #cd3737;
+    padding: 0.13125rem;
+    margin: 0;
+    border-radius: 0.3125rem;
 }
 
 /* Calendar week day styling */
