@@ -54,6 +54,7 @@
 
 /* Calendar title styling */
 .calzyr-title {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,8 +79,12 @@
     position: absolute;
     display: flex;
     left: 1rem;
-    text-align: start !important;
-    align-items: start !important;
+}
+
+.calzyr-title .calzyr-calendar-settings {
+    position: absolute;
+    display: flex;
+    right: 1rem;
 }
 
 .next-month {

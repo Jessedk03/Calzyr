@@ -4,7 +4,7 @@ import VueCalzyr from './VueCalzyr.vue';
 
 <template>
   <!--  Light mode example-->
-  <VueCalzyr showOption showDayOfWeek/>
+  <VueCalzyr showOption showDayOfWeek highlightToday changeDateView />
   <div id="padding-top">
     <!--  Dark mode example-->
     <VueCalzyr darkMode highlightToday/>

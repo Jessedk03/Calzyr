@@ -9,6 +9,11 @@
         <Gear :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
       </button>
 
+      <!--      Showing the calendar options button if the changeDateView attribute is being added to the VueCal tag-->
+      <button v-if="changeDateView" class="calzyr-button calzyr-calendar-settings" @click="toggleOptions">
+        <Calendar :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
+      </button>
+
       <button class="previous-month" @click="previousMonth">
         <ArrowLeft :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
       </button>
@@ -38,6 +43,7 @@
 import ArrowRight from "@/assets/ArrowRight.vue";
 import ArrowLeft from "@/assets/ArrowLeft.vue";
 import Gear from "@/assets/Gear.vue";
+import Calendar from "@/assets/Calendar.vue";
 
 const date = new Date();
 
@@ -46,13 +52,16 @@ export default {
   components: {
     ArrowRight,
     ArrowLeft,
-    Gear
+    Gear,
+    Calendar
   },
   props: {
     // Sets the darkMode to true by adding that attribute to the VueCal tag
     darkMode: {type: Boolean, default: false},
     // Show options
     showOption: {type: Boolean, default: false},
+    // Changes the date view,
+    changeDateView: {type: Boolean, default: false},
     // Shows week numbers (week 30, 31...)
     showWeekNumber: {type: Boolean, default: false},
     // Show day of week (M, T...)
@@ -118,7 +127,7 @@ export default {
   },
   methods: {
     toggleOptions() {
-    //   TODO: Make an options popup.
+      //   TODO: Make an options popup.
     },
     isToday(day) {
       return (
