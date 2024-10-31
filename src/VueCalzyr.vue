@@ -8,11 +8,17 @@
       <button v-if="showOption" class="calzyr-button calzyr-settings" @click="toggleOptions">
         <Gear :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
       </button>
+      <div class="calzyr-show-options" v-if="showOption">
+        <ShowOptions />
+      </div>
 
       <!--      Showing the calendar options button if the changeDateView attribute is being added to the VueCal tag-->
-      <button v-if="changeDateView" class="calzyr-button calzyr-calendar-settings" @click="toggleOptions">
+      <button v-if="changeDateView" class="calzyr-button calzyr-calendar-settings" @click="toggleDateView">
         <Calendar :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
       </button>
+      <div class="calzyr-change-date-view" v-if="changeDateView">
+        <ChangeDateView />
+      </div>
 
       <button class="previous-month" @click="previousMonth">
         <ArrowLeft :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
@@ -40,20 +46,27 @@
 </template>
 
 <script>
+// Icons
 import ArrowRight from "@/assets/ArrowRight.vue";
 import ArrowLeft from "@/assets/ArrowLeft.vue";
 import Gear from "@/assets/Gear.vue";
 import Calendar from "@/assets/Calendar.vue";
+
+// Popups
+import ChangeDateView from "@/ChangeDateView.vue";
+import ShowOptions from "@/ShowOptions.vue";
 
 const date = new Date();
 
 export default {
   name: "Calzyr",
   components: {
+    ShowOptions,
+    ChangeDateView,
     ArrowRight,
     ArrowLeft,
     Gear,
-    Calendar
+    Calendar,
   },
   props: {
     // Sets the darkMode to true by adding that attribute to the VueCal tag
@@ -128,9 +141,15 @@ export default {
   methods: {
     toggleOptions() {
       //   TODO: Make an options popup.
+      if (this.showOption) {
+        console.log("Toggle the pop up (show options)")
+      }
     },
-    changeDateView() {
+    toggleDateView() {
       // TODO: Make an change date view popup
+      if (this.changeDateView) {
+        console.log("Toggle the pop up (change date view)")
+      }
     },
     isToday(day) {
       return (
