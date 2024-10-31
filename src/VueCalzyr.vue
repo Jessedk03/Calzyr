@@ -129,6 +129,9 @@ export default {
     toggleOptions() {
       //   TODO: Make an options popup.
     },
+    changeDateView() {
+      // TODO: Make an change date view popup
+    },
     isToday(day) {
       return (
           day === this.todayDate &&
