@@ -1,3 +1,4 @@
+/* Calendar container styling */
 .calzyr-container {
     border: 0.0625rem solid;
     border-radius: 0.3125rem;
@@ -5,7 +6,7 @@
     font-family: Verdana, sans-serif;
 }
 
-@media(max-width: 768px) {
+@media(min-width: 768px) {
     .calzyr-container {
         width: 450px
     }
@@ -19,15 +20,15 @@
 @media(max-width: 380px) {
     .calzyr-container {
         width: 100%;
+        font-size: 12px;
     }
-}
 
-.light {
-   color: #4d4d4d;
-}
-
-.dark {
-    color: #cccccc;
+    .calzyr-title-date {
+        text-align: center;
+        width: 100%;
+        max-width: 140px !important;
+        font-size: 14px;
+    }
 }
 
 .calzyr-container.dark {
@@ -42,18 +43,27 @@
     border-color: #eeeeee;
 }
 
+/* Light / Dark text color */
+.light {
+    color: #4d4d4d;
+}
+
+.dark {
+    color: #cccccc;
+}
+
+/* Calendar title styling */
 .calzyr-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    padding: 0.6250rem 0;
     font-weight: bolder;
     letter-spacing: 0.0625rem;
 }
 .calzyr-title p {
     margin: 0;
-    margin-top: 0.3125rem !important;
-    padding-bottom: 0.625rem
+    padding-bottom: 0.1rem
 }
 
 .calzyr-title.dark {
@@ -62,6 +72,40 @@
 
 .calzyr-title.light {
     border-bottom: 0.0625rem solid #eeeeee;
+}
+
+.calzyr-title .calzyr-settings {
+    position: absolute;
+    display: flex;
+    left: 1rem;
+    text-align: start !important;
+    align-items: start !important;
+}
+
+.next-month {
+    background: none;
+    color: inherit;
+    border: none;
+    padding-left: 0.625rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.previous-month {
+    background: none;
+    color: inherit;
+    border: none;
+    padding-right: 0.625rem;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.calzyr-title-date {
+    text-align: center;
+    width: 100%;
+    max-width: 180px;
 }
 
 /* Calendar content styling */
@@ -117,26 +161,6 @@
     color: inherit;
     border: none;
     padding: 0.3125rem 0.3125rem;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-}
-
-.next-month {
-    background: none;
-    color: inherit;
-    border: none;
-    padding-left: 0.625rem;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
-}
-
-.previous-month {
-    background: none;
-    color: inherit;
-    border: none;
-    padding-right: 0.625rem;
     font: inherit;
     cursor: pointer;
     outline: inherit;

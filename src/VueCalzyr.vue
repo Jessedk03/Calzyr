@@ -1,23 +1,24 @@
 <template>
   <div :class="['calzyr-container', darkMode ? 'dark' : 'light']">
 
-    <!--    Showing the options button if the showOptions attribute is being added to the VueCal tag-->
-    <button v-if="showOption" class="calzyr-button" @click="toggleOptions">
-      <Gear :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
-    </button>
-
     <!--    Calendar -->
     <div :class="['calzyr-title', darkMode ? 'dark' : 'light']">
+
+      <!--    Showing the options button if the showOptions attribute is being added to the VueCal tag-->
+      <button v-if="showOption" class="calzyr-button calzyr-settings" @click="toggleOptions">
+        <Gear :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
+      </button>
+
       <button class="previous-month" @click="previousMonth">
         <ArrowLeft :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
       </button>
-      <p> {{ currentMonth }} - {{ currentYear }} </p>
+      <p class="calzyr-title-date"> {{ currentMonth }} {{ currentYear }} </p>
       <button class="next-month" @click="nextMonth">
         <ArrowRight :color="darkMode ? '#cccccc' : '#4d4d4d'"/>
       </button>
     </div>
 
-<!--    Calendar content-->
+    <!--    Calendar content-->
     <div class="calzyr-content">
       <!--      Showing the days of the week if the showDaysOfWeek attribute is added to the VueCal tag -->
       <div v-if="showDayOfWeek" v-for="day in weekDays" :key="day" class="calzyr-weekday">
@@ -70,7 +71,7 @@ export default {
       currentYear: date.getFullYear(),
       showOptionsPopup: false,
       todayDate: date.getDate(),
-      todayMonth: date.getMonth() +1,
+      todayMonth: date.getMonth() + 1,
       todayYear: date.getFullYear(),
     };
   },
@@ -84,6 +85,28 @@ export default {
     weekDays() {
       return ["M", "T", "W", "T", "F", "S", "S"];
     },
+    calendarWeeks() {
+      const weeks = [];
+      let weekNumber = this.getWeekNumber(new Date(this.currentYear, this.currentMonthIndex - 1, 1));
+      let week = {weekNumber, days: Array(this.firstDayOfMonth).fill(null)};
+
+      this.daysInMonth.forEach((day, index) => {
+        if (week.days.length === 7) {
+          weeks.push(week);
+          weekNumber++;
+          week = {weekNumber, days: []};
+        }
+        week.days.push(day);
+      });
+
+      if (week.days.length) {
+        while (week.days.length < 7) {
+          week.days.push(null)
+        }
+        weeks.push(week);
+      }
+      return weeks;
+    },
     firstDayOfMonth() {
       const day = new Date(this.currentYear, this.currentMonthIndex - 1, 1).getDay();
       return day === 0 ? 6 : day - 1;
@@ -95,7 +118,7 @@ export default {
   },
   methods: {
     toggleOptions() {
-      console.log('hello');
+    //   TODO: Make an options popup.
     },
     isToday(day) {
       return (
@@ -103,6 +126,11 @@ export default {
           this.currentMonthIndex === this.todayMonth &&
           this.currentYear === this.todayYear
       );
+    },
+    getWeekNumber(date) {
+      const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+      const days = Math.floor((date - firstDayOfYear) / (24 * 60 * 60 * 1000));
+      return Math.ceil((days + firstDayOfYear.getDay() + 1) / 7);
     },
     previousMonth() {
       if (this.currentMonthIndex === 1) {
