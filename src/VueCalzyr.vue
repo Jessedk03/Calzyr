@@ -37,7 +37,7 @@
       </div>
 
       <div v-for="(day, index) in daysToDisplay" :key="index" class="calzyr-day">
-        <span :class="{ today: highlightToday && isToday(day)}">
+        <span :class="{ today: highlightToday && isToday(day)}" @click="toggleDayInformation">
           {{ day !== null ? day : '' }}
         </span>
       </div>
@@ -150,6 +150,9 @@ export default {
       if (this.changeDateView) {
         console.log("Toggle the pop up (change date view)")
       }
+    },
+    toggleDayInformation() {
+
     },
     isToday(day) {
       return (
