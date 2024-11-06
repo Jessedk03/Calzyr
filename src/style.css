@@ -40,7 +40,7 @@
 .calzyr-container.light {
     background-color: #f7f7f7;
     color: #4d4d4d;
-    border-color: #eeeeee;
+    border-color: #cccccc;
 }
 
 /* Light / Dark text color */
@@ -58,7 +58,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.6250rem 0;
+    padding: 0.7125rem 0;
     font-weight: bolder;
     letter-spacing: 0.0625rem;
 }
